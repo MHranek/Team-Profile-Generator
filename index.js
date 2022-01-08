@@ -14,17 +14,17 @@ const employeeList = [];
 // Questions
 const managerQuestions = [
     {
-        name: 'managerName',
+        name: 'name',
         type: 'input',
         message: "What is the team manager's name?"
     },
     {
-        name: 'managerId',
+        name: 'id',
         type: 'input',
         message: "What is the manager's ID?"
     },
     {
-        name: 'managerEmail',
+        name: 'email',
         type: 'input',
         message: "What is the manager's Email?"
     },
@@ -86,7 +86,7 @@ inquirer
 .then((response) => {
     // response is all the manager's data
     // create manager object with response, add to employee list
-    const newManager = new Manager(response.managerName, response.managerId, response.managerEmail, response.officeNum);
+    const newManager = new Manager(response.name, response.id, response.email, response.officeNum);
     employeeList.push(newManager);
 
     // then prompt user to pick between adding new engineer, intern, or no new employee
@@ -119,7 +119,7 @@ function promptAgain() {
                 });
             } else {
                 // TODO if no new employee finish prompt and generate HTML
-                console.log(employeeList);
+                // console.log(employeeList);
             }
         })
 };
