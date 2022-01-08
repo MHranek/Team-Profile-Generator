@@ -138,7 +138,7 @@ function generateHTML() {
         let listOption = "";
         switch (role) {
             case 'Engineer':
-                    listOption = `Github: ${obj.getGithub()}`;
+                    listOption = `Github: <a href="https://github.com/${obj.getGithub()}">${obj.getGithub()}</a>`;
                 break;
             case 'Intern':
                     listOption = `School: ${obj.getSchool()}`;
@@ -154,7 +154,7 @@ function generateHTML() {
     <section class="card-body">
         <ul class="list-group">
             <li class="list-group-item">ID: ${obj.getId()}</li>
-            <li class="list-group-item">Email: ${obj.getEmail()}</li>
+            <li class="list-group-item">Email: <a href="mailto: ${obj.getEmail()}">${obj.getEmail()}</a></li>
             <li class="list-group-item">${listOption}</li>
         </ul>
     </section>
@@ -171,7 +171,7 @@ function generateHTML() {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <link rel="stylesheet" href="test.css">
+        <link rel="stylesheet" href="style.css">
         <title>Team Profile</title>
     </head>
     <body>
