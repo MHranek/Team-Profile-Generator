@@ -1,0 +1,11 @@
+header {
+    text-align: center;
+    padding: 40px 0;
+    background-color: rgb(121, 121, 255);
+    margin-bottom: 40px;
+}
+
+.card {
+    flex-basis: 250px;
+    box-shadow: 3px 3px 10px black;
+}
