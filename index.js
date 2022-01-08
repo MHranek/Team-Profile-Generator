@@ -118,33 +118,52 @@ function promptAgain() {
                     promptAgain();
                 });
             } else {
-                // TODO if no new employee finish prompt and generate HTML
+                // if no new employee finish prompt and generate HTML
                 // console.log(employeeList);
+                const newHTML = generateHTML();
+                writeToFile(newHTML);
             }
         })
 };
 
 // Generates the html data
 function generateHTML() {
-    return `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <title>Team Profile</title>
-</head>
-<body>
-    
-</body>
-</html>`;
-}
+    // TODO generate dynamic html based on employee list
+    const employeeStrings = [];
 
-// Generates CSS
-function generateCSS() {
-    return ;
+    // convert employeeList objects into html coded strings and push to employeeStrings
+
+    // put the employee strings (template literal) into newHTML in the correct spot
+
+    const newHTML = "";
+    return newHTML;
 }
 
 // Writes html data to index.html and style.css
+function writeToFile(data) {
+    // html
+    const newHTML = data;
+    fs.writeFile('./output/index.html', newHTML, (err) => {
+        err ? console.error(err) : console.log("Sucessfuly created index.html")
+    });
+    // css
+    const newCSS = `header {
+    text-align: center;
+    padding: 40px 0;
+    background-color: rgb(191, 95, 255);
+    margin-bottom: 40px;
+}
+
+.card {
+    flex-basis: 250px;
+    box-shadow: 3px 3px 10px black;
+    margin: 10px;
+}
+
+.list-group {
+    padding: 10px 0;
+}`;
+    fs.writeFile('./output/style.css', newCSS, (err) => {
+        err ? console.error(err) : console.log("Sucessfuly created style.css")
+    });
+}
