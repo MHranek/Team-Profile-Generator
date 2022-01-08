@@ -17,12 +17,12 @@ function generateHTML() {
 <body>
     
 </body>
-</html>`
+</html>`;
 }
 
 // Generates CSS
 function generateCSS() {
-
+    return ;
 }
 
 // Writes html data to index.html and style.css
