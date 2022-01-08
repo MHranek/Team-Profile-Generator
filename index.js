@@ -128,14 +128,63 @@ function promptAgain() {
 
 // Generates the html data
 function generateHTML() {
-    // TODO generate dynamic html based on employee list
-    const employeeStrings = [];
+    // generate dynamic html based on employee list
+    const employeeStringsArr = [];
 
     // convert employeeList objects into html coded strings and push to employeeStrings
+    for (let i = 0; i < employeeList.length; i++) {
+        const obj = employeeList[i];
+        const role = obj.getRole();
+        let listOption = "";
+        switch (role) {
+            case 'Engineer':
+                    listOption = `Github: ${obj.getGithub()}`;
+                break;
+            case 'Intern':
+                    listOption = `School: ${obj.getSchool()}`;
+                break;
+            default:
+                listOption = `Office Number: ${obj.officeNumber}`;
+                break;
+        }
+        const template = `<div class="card">
+    <section class="card-header bg-info">
+        <h2>${obj.getName()}<br>${obj.getRole()}</h2>
+    </section>
+    <section class="card-body">
+        <ul class="list-group">
+            <li class="list-group-item">ID: ${obj.getId()}</li>
+            <li class="list-group-item">Email: ${obj.getEmail()}</li>
+            <li class="list-group-item">${listOption}</li>
+        </ul>
+    </section>
+</div>`;
+        employeeStringsArr.push(template);
+    }
 
+    const employeeStrings = employeeStringsArr.join('');
     // put the employee strings (template literal) into newHTML in the correct spot
-
-    const newHTML = "";
+    const newHTML = `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="test.css">
+        <title>Team Profile</title>
+    </head>
+    <body>
+        <header>
+            <h1>My Team</h1>
+        </header>
+        <main>
+            <section id="card-section" class="d-flex justify-content-center flex-wrap mx-5">
+                ${employeeStrings}
+            </section>
+        </main>
+    </body>
+    </html>`;
     return newHTML;
 }
 
@@ -144,7 +193,9 @@ function writeToFile(data) {
     // html
     const newHTML = data;
     fs.writeFile('./output/index.html', newHTML, (err) => {
-        err ? console.error(err) : console.log("Sucessfuly created index.html")
+        if (err) {
+            console.error(err);
+        }
     });
     // css
     const newCSS = `header {
@@ -164,6 +215,8 @@ function writeToFile(data) {
     padding: 10px 0;
 }`;
     fs.writeFile('./output/style.css', newCSS, (err) => {
-        err ? console.error(err) : console.log("Sucessfuly created style.css")
+        if (err) {
+            console.error(err);
+        }
     });
 }
