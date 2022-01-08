@@ -85,11 +85,11 @@ inquirer
 .prompt(managerQuestions)
 .then((response) => {
     // response is all the manager's data
-    // TODO create manager object with response, add to employee list
+    // create manager object with response, add to employee list
     const newManager = new Manager(response.managerName, response.managerId, response.managerEmail, response.officeNum);
     employeeList.push(newManager);
 
-    // TODO then prompt user to pick between adding new engineer, intern, or no new employee
+    // then prompt user to pick between adding new engineer, intern, or no new employee
     promptAgain();
 })
 
@@ -107,6 +107,7 @@ function promptAgain() {
                     // create engineer object
                     const newEngineer = new Engineer(eResp.name, eResp.id, eResp.email, eResp.github);
                     employeeList.push(newEngineer);
+                    promptAgain();
                 });
             } else if (response.choice === 'Intern') {
                 // if intern, prompt based on intern questions
@@ -114,6 +115,7 @@ function promptAgain() {
                     // create intern object
                     const newIntern = new Intern(iResp.name, iResp.id, iResp.email, iResp.school);
                     employeeList.push(newIntern);
+                    promptAgain();
                 });
             } else {
                 // TODO if no new employee finish prompt and generate HTML
