@@ -24,4 +24,4 @@ describe("Employee", () => {
         const obj = new Employee();
         expect(obj.getRole()).toEqual(string);
     });
-})
+});

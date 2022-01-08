@@ -12,4 +12,4 @@ describe("Manager", () => {
         const obj = new Manager();
         expect(obj.getRole()).toEqual(string);
     });
-})
+});
