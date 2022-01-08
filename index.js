@@ -148,17 +148,17 @@ function generateHTML() {
                 break;
         }
         const template = `<div class="card">
-    <section class="card-header bg-info">
-        <h2>${obj.getName()}<br>${obj.getRole()}</h2>
-    </section>
-    <section class="card-body">
-        <ul class="list-group">
-            <li class="list-group-item">ID: ${obj.getId()}</li>
-            <li class="list-group-item">Email: <a href="mailto: ${obj.getEmail()}">${obj.getEmail()}</a></li>
-            <li class="list-group-item">${listOption}</li>
-        </ul>
-    </section>
-</div>`;
+                    <section class="card-header bg-info">
+                        <h2>${obj.getName()}<br>${obj.getRole()}</h2>
+                    </section>
+                    <section class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">ID: ${obj.getId()}</li>
+                            <li class="list-group-item">Email: <a href="mailto: ${obj.getEmail()}">${obj.getEmail()}</a></li>
+                            <li class="list-group-item">${listOption}</li>
+                        </ul>
+                    </section>
+                </div>`;
         employeeStringsArr.push(template);
     }
 
