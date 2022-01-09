@@ -3,7 +3,7 @@ const Manager = require('../lib/manager');
 describe("Manager", () => {
     it("should return engineer's office number", () => {
         const officeNumber = '45';
-        const obj = new Manager(officeNumber);
+        const obj = new Manager("","","",officeNumber);
         expect(obj.officeNumber).toEqual(officeNumber);
     });
 

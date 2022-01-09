@@ -3,7 +3,7 @@ const Intern = require('../lib/intern');
 describe("Intern", () => {
     it("should return intern's school", () => {
         const school = 'RIT';
-        const obj = new Intern(school);
+        const obj = new Intern("","","",school);
         expect(obj.getSchool()).toEqual(school);
     });
 
