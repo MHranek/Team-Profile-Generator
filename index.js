@@ -92,6 +92,7 @@ inquirer
     // then prompt user to pick between adding new engineer, intern, or no new employee
     promptAgain();
 })
+.catch(err => console.error(err));
 
 // prompt again
 function promptAgain() {
@@ -124,6 +125,7 @@ function promptAgain() {
                 writeToFile(newHTML);
             }
         })
+        .catch(err => console.error(err));
 };
 
 // Generates the html data
@@ -192,16 +194,12 @@ function generateHTML() {
 function writeToFile(data) {
     // html
     const newHTML = data;
-    fs.writeFile('./output/index.html', newHTML, (err) => {
-        if (err) {
-            console.error(err);
-        }
-    });
+    fs.writeFile('./output/index.html', newHTML, (err) => {err => console.error(err)});
     // css
     const newCSS = `header {
     text-align: center;
     padding: 40px 0;
-    background-color: rgb(191, 95, 255);
+    background-color: rgb(159, 100, 255);
     margin-bottom: 40px;
 }
 
@@ -214,9 +212,5 @@ function writeToFile(data) {
 .list-group {
     padding: 10px 0;
 }`;
-    fs.writeFile('./output/style.css', newCSS, (err) => {
-        if (err) {
-            console.error(err);
-        }
-    });
+    fs.writeFile('./output/style.css', newCSS, (err) => {err => console.error(err)});
 }
